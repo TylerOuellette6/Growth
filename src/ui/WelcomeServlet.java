@@ -29,7 +29,7 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
         // Create an account
         if (buttonValue != null && buttonValue.equals("Create Account") && username != null){
             user = new UserModel();
-            user.setUsername(username);
+            user.setPlayerName(username);
             UserDao.saveUser(user);
         }
 
@@ -48,7 +48,7 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
         // Or by anonymous
         else if (buttonValue != null && buttonValue.equals("Be Anonymous")){
             user = new UserModel();
-            user.setUsername("anonymous");
+            user.setPlayerName("anonymous");
             UserDao.saveUser(user);
         }
 

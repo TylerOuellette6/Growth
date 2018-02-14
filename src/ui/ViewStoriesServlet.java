@@ -57,7 +57,7 @@ public class ViewStoriesServlet extends javax.servlet.http.HttpServlet {
         // If there is no user for some weird reason, just use anonymous.
         if (user == null) {
             user = new UserModel();
-            user.setUsername("anonymous");
+            user.setPlayerName("anonymous");
         }
 
         return user;
@@ -98,7 +98,7 @@ public class ViewStoriesServlet extends javax.servlet.http.HttpServlet {
      */
     private void addStory(UserModel user, String storyText) {
         if (storyText != null && storyText.length() > 0 && user != null) {
-            StoryDao.saveStory(UniqueIdDao.getID(), storyText, user.getUsername(), 0);
+            StoryDao.saveStory(UniqueIdDao.getID(), storyText, user.getPlayerName(), 0);
         }
     }
 

@@ -34,7 +34,7 @@ public class UserDao {
      */
     public static void saveUser(UserModel userModel){
         try {
-            File file = new File(getFilePath(userModel.getUsername()));
+            File file = new File(getFilePath(userModel.getPlayerName()));
             file.createNewFile();
             FileOutputStream fos;
             fos = new FileOutputStream(file);
@@ -88,17 +88,26 @@ public class UserDao {
     }
 
     private static void testUserDao() {
-        String username = "danny";
+        String playerName = "Tyler";
+        int levelNum = 1;
+
         UserDao dao = new UserDao();
         UserModel user = new UserModel();
-        user.setUsername(username);
+        user.setPlayerName(playerName);
+        user.setLevelNum(levelNum);
         dao.saveUser(user);
 
-        user = dao.getUser(username);
+        user = dao.getUser(playerName);
         assert(user != null);
-        assert(user.getUsername().compareTo(username) == 0);
+        assert(user.getPlayerName().compareTo(playerName) == 0);
+        assert(user.getLevelNum() == levelNum);
 
-        dao.deleteUser(username);
+        System.out.println(playerName);
+        System.out.println(user.getPlayerName());
+        System.out.println(levelNum);
+        System.out.println(user.getLevelNum());
+
+        dao.deleteUser(playerName);
     }
 
 }
