@@ -2,10 +2,10 @@
   <artifact type="exploded-war" name="SimpleWebAppWithStorage:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/SimpleWebAppWithStorage_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="SimpleWebAppWithStorage/web/Web" />
+      <element id="javaee-facet-resources" facet="Growth/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="SimpleWebAppWithStorage" />
+          <element id="module-output" name="Growth" />
         </element>
       </element>
     </root>

@@ -7,15 +7,17 @@
         <welcome-file>welcome</welcome-file>
     </welcome-file-list>
 
+    <!--MAIN SCREEN-->
     <servlet>
-        <servlet-name>viewStoriesServlet</servlet-name>
-        <servlet-class>ui.ViewStoriesServlet</servlet-class>
+        <servlet-name>mainScreenServlet</servlet-name>
+        <servlet-class>ui.MainScreenServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>viewStoriesServlet</servlet-name>
+        <servlet-name>mainScreenServlet</servlet-name>
         <url-pattern>/viewStories</url-pattern>
     </servlet-mapping>
 
+    <!--WELCOME SCREEN-->
     <servlet>
         <servlet-name>welcomeServlet</servlet-name>
         <servlet-class>ui.WelcomeServlet</servlet-class>
@@ -23,6 +25,36 @@
     <servlet-mapping>
         <servlet-name>welcomeServlet</servlet-name>
         <url-pattern>/welcome</url-pattern>
+    </servlet-mapping>
+
+    <!--INVENTORY SCREEN-->
+    <servlet>
+        <servlet-name>inventoryServlet</servlet-name>
+        <servlet-class>ui.InventoryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>inventoryServlet</servlet-name>
+        <url-pattern>/inventory</url-pattern>
+    </servlet-mapping>
+
+    <!--BUILDING SCREEN-->
+    <servlet>
+        <servlet-name>buildingServlet</servlet-name>
+        <servlet-class>ui.BuildingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>buildingServlet</servlet-name>
+        <url-pattern>/building</url-pattern>
+    </servlet-mapping>
+
+    <!--ACHIEVEMENTS SCREEN-->
+    <servlet>
+        <servlet-name>achievementsServlet</servlet-name>
+        <servlet-class>ui.AchievementsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>achievementsServlet</servlet-name>
+        <url-pattern>/achievements</url-pattern>
     </servlet-mapping>
 
 </web-app>

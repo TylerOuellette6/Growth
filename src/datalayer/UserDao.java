@@ -90,22 +90,32 @@ public class UserDao {
     private static void testUserDao() {
         String playerName = "Tyler";
         int levelNum = 1;
+        int health = 50;
+        int energy = 50;
 
         UserDao dao = new UserDao();
         UserModel user = new UserModel();
         user.setPlayerName(playerName);
         user.setLevelNum(levelNum);
+        user.setHealth(health);
+        user.setEnergy(energy);
         dao.saveUser(user);
 
         user = dao.getUser(playerName);
         assert(user != null);
         assert(user.getPlayerName().compareTo(playerName) == 0);
         assert(user.getLevelNum() == levelNum);
+        assert(user.getHealth() == health);
+        assert(user.getEnergy() == energy);
 
-        System.out.println(playerName);
+        System.out.println("Name " + playerName);
         System.out.println(user.getPlayerName());
-        System.out.println(levelNum);
+        System.out.println("Level " + levelNum);
         System.out.println(user.getLevelNum());
+        System.out.println("Health " + health);
+        System.out.println(user.getHealth());
+        System.out.println("Energy " + energy);
+        System.out.println(user.getEnergy());
 
         dao.deleteUser(playerName);
     }

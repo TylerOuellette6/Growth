@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.logging.Logger;
 
-public class ViewStoriesServlet extends javax.servlet.http.HttpServlet {
+public class MainScreenServlet extends javax.servlet.http.HttpServlet {
     private Logger logger = Logger.getLogger(getClass().getName());
 
     /**
@@ -30,11 +30,31 @@ public class ViewStoriesServlet extends javax.servlet.http.HttpServlet {
         // Get data from the request
         UserModel user = loadUserFromRequest(request);
         String storyText=request.getParameter("storyText");
-        String buttonValue = request.getParameter("submitButton");
+        String buttonValue = request.getParameter("button");
 
         // If submit was hit, add a story.
-        if (buttonValue != null && buttonValue.equals("Submit")){
-            addStory(user, storyText);
+//        if (buttonValue != null && buttonValue.equals("Submit")){
+//            addStory(user, storyText);
+//        }
+        if(buttonValue != null && buttonValue.equals("Inventory")){
+            RequestDispatcher newDispatcher = request.getRequestDispatcher("/inventory");
+            newDispatcher.forward(request, response);
+            return;
+        }
+        else if(buttonValue != null && buttonValue.equals("Crafting")){
+            RequestDispatcher newDispatcher = request.getRequestDispatcher("/crafting");
+            newDispatcher.forward(request, response);
+            return;
+        }
+        else if(buttonValue != null && buttonValue.equals("Building")){
+            RequestDispatcher newDispatcher = request.getRequestDispatcher("/building");
+            newDispatcher.forward(request, response);
+            return;
+        }
+        else if(buttonValue != null && buttonValue.equals("Achievements")){
+            RequestDispatcher newDispatcher = request.getRequestDispatcher("/achievements");
+            newDispatcher.forward(request, response);
+            return;
         }
 
         // Load any data we need on the page into the request.
@@ -42,7 +62,7 @@ public class ViewStoriesServlet extends javax.servlet.http.HttpServlet {
         loadStoriesIntoRequest(request);
 
         // Show the page
-        RequestDispatcher dispatcher=request.getRequestDispatcher("/viewstories.jsp");
+        RequestDispatcher dispatcher=request.getRequestDispatcher("/viewstories.jsp"); //I don't want this to load directly to the JSP right now, but this works temporarily
         dispatcher.forward(request, response);
 
     }
