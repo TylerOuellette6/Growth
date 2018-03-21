@@ -1,0 +1,71 @@
+header, body, footer, aside, nav, main, article, figure {
+    display: block;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background-color: lightgreen;
+}
+#nav_menu ul{
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+#nav_menu ul li{
+    float: left;
+    border-left: 1.5px solid black;
+    border-right: 1.5px solid black;
+    border-bottom: 3px solid black;
+    width: 16.51%;
+}
+#nav_menu li a{
+    display: block;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-decoration: none;
+    font-weight: bold;
+}
+#nav_menu li b{
+    display: block;
+    text-align: center;
+    padding-top: 0.96em;
+    padding-bottom: 0.96em;
+}
+
+body{
+    overflow-y: hidden;
+}
+main h1{
+    position: fixed;
+    left: 50%;
+    top: 15%;
+    font-size: 400%;
+    transform: translate(-50%, -50%);
+}
+section{
+    float: left;
+    width: 33%;
+    padding-top: 8%;
+}
+section li{
+    font-size: 120%;
+    padding-left: 40%;
+    padding-top: 6%;
+    list-style-type: none;
+}
+aside{
+    float: right;
+    width: 33%;
+    padding-top: 8%;
+}
+aside li{
+    font-size: 120%;
+    padding-right: 40%;
+    padding-top: 6%;
+    list-style-type: none;
+}

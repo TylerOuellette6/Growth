@@ -36,6 +36,11 @@ public class MainScreenServlet extends javax.servlet.http.HttpServlet {
 //        if (buttonValue != null && buttonValue.equals("Submit")){
 //            addStory(user, storyText);
 //        }
+
+        if(buttonValue.equals("Add Wood")){
+            user.addWood(500);
+        }
+
         if(buttonValue != null && buttonValue.equals("Inventory")){
             RequestDispatcher newDispatcher = request.getRequestDispatcher("/inventory");
             newDispatcher.forward(request, response);
@@ -71,13 +76,13 @@ public class MainScreenServlet extends javax.servlet.http.HttpServlet {
      * Grab the username from the request and create a user model.
      */
     private UserModel loadUserFromRequest(HttpServletRequest request) {
-        String username=request.getParameter("username");
+        String username = (String) request.getSession().getAttribute("username");
         UserModel user = UserDao.getUser(username);
 
         // If there is no user for some weird reason, just use anonymous.
         if (user == null) {
             user = new UserModel();
-            user.setPlayerName("anonymous");
+            user.createPlayer("anonymous",0,0,0,0);
         }
 
         return user;

@@ -37,7 +37,7 @@ public class CraftingServlet extends javax.servlet.http.HttpServlet{
         // If there is no user for some weird reason, just use anonymous.
         if (user == null) {
             user = new UserModel();
-            user.setPlayerName("anonymous");
+            user.createPlayer("anonymous",0,0,0,0);
         }
 
         return user;

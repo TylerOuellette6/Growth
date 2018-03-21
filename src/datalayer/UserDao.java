@@ -95,10 +95,7 @@ public class UserDao {
 
         UserDao dao = new UserDao();
         UserModel user = new UserModel();
-        user.setPlayerName(playerName);
-        user.setLevelNum(levelNum);
-        user.setHealth(health);
-        user.setEnergy(energy);
+        user.createPlayer("Tyler", 0,0,0,0);
         dao.saveUser(user);
 
         user = dao.getUser(playerName);

@@ -27,7 +27,7 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
 
         // Load data from the request
         String buttonValue = request.getParameter("button");
-        String username=request.getParameter("username");
+        String username = request.getParameter("username");
 
 //        if(username == "" && buttonValue != ""){
 //            RequestDispatcher dispatcher=request.getRequestDispatcher("/welcome.jsp");
@@ -51,12 +51,8 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
                     for(int i = 0; i < 11; i++) {
                         tempInventory.add(0);
                     }
-                    user.setPlayerName(username);
-                    user.setLevelNum(1);
-                    user.setEnergy(50);
-                    user.setHealth(50);
-                    user.setCurrentXP(0);
-                    user.setInventory(tempInventory);
+                    user.createPlayer(username, 1,50,50,10);
+                    user.setPlayerInventory(tempInventory);
                     UserDao.saveUser(user);
                 }
 
@@ -67,11 +63,12 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
                     user.getLevelNum();
                     user.getEnergy();
                     user.getHealth();
-                    user.getCurrentXP();
+                    user.getRemainingXP();
                 }
             }
+            request.getSession().setAttribute("username", user.getPlayerName());
+            request.getSession().setAttribute("user", user);
         }
-
 
 //        // Or by anonymous
 //        else if (buttonValue != null && buttonValue.equals("Be Anonymous")){
@@ -92,6 +89,7 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
      * The get method is invoked when the user goes to the page by browser URI.
      */
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+        String username = (String) request.getSession().getAttribute("username");
         RequestDispatcher dispatcher = request.getRequestDispatcher("/welcome.jsp");
         dispatcher.forward(request, response);
     }

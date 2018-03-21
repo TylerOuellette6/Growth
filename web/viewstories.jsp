@@ -33,7 +33,7 @@
     UserModel user = (UserModel) request.getAttribute("user");
     if (user == null) {
         user = new UserModel();
-        user.setPlayerName("anonymous");
+        user.createPlayer("anonymous",0,0,0,0);
     }
 
     StoryModel stories[] = (StoryModel[]) request.getAttribute("stories");
@@ -62,7 +62,7 @@
         <main>
             <h1>Growth</h1>
             <section>
-                <input type="submit" class="btn-left" name="button" value="Activities">
+                <input type="submit" class="btn-left" name="button" value="Add Wood">
                 <input type="submit" class="btn-left" name="button" value="Inventory">
                 <input type="submit" class="btn-left" name="button" value="Crafting">
                 <input type="submit" class="btn-left" name="button" value="Building">
