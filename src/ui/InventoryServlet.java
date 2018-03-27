@@ -17,7 +17,7 @@ public class InventoryServlet extends javax.servlet.http.HttpServlet{
         String buttonValue = request.getParameter("button");
 
         if(buttonValue != null && buttonValue.equals("Back to Main Page")){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/viewStories");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/mainScreen");
             dispatcher.forward(request, response);
             return;
         }
@@ -34,17 +34,13 @@ public class InventoryServlet extends javax.servlet.http.HttpServlet{
         String username = (String) request.getSession().getAttribute("username");
         UserModel user = UserDao.getUser(username);
 
-        // If there is no user for some weird reason, just use anonymous.
-        if (user == null) {
-            user = new UserModel();
-            user.createPlayer("anonymous", 0,0,0,0);
-        }
-
         return user;
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        loadUserFromRequest(request);
+        UserModel user = loadUserFromRequest(request);
+        request.setAttribute("user", user);
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/inventory.jsp");
         dispatcher.forward(request, response);
     }

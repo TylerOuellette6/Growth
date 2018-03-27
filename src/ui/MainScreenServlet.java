@@ -3,6 +3,7 @@ package ui;
 import datalayer.StoryDao;
 import datalayer.UniqueIdDao;
 import datalayer.UserDao;
+import models.GameController;
 import models.StoryModel;
 import models.UserModel;
 
@@ -32,13 +33,21 @@ public class MainScreenServlet extends javax.servlet.http.HttpServlet {
         String storyText=request.getParameter("storyText");
         String buttonValue = request.getParameter("button");
 
-        // If submit was hit, add a story.
-//        if (buttonValue != null && buttonValue.equals("Submit")){
-//            addStory(user, storyText);
-//        }
-
-        if(buttonValue.equals("Add Wood")){
-            user.addWood(500);
+        if(buttonValue.equals("Gather Wood")){
+            user.actionPerformed("Wood", GameController.randomCollectionGenerator(), 3);
+            UserDao.saveUser(user);
+        }
+        if(buttonValue.equals("Gather Apples")){
+            user.actionPerformed("Apples", GameController.randomCollectionGenerator(), 2);
+            UserDao.saveUser(user);
+        }
+        if(buttonValue.equals("Gather Grass")){
+            user.actionPerformed("Grass", GameController.randomCollectionGenerator(), 3);
+            UserDao.saveUser(user);
+        }
+        if(buttonValue.equals("Go Mining")){
+            user.actionPerformed("Stone", GameController.randomCollectionGenerator(), 5);
+            UserDao.saveUser(user);
         }
 
         if(buttonValue != null && buttonValue.equals("Inventory")){
@@ -67,7 +76,7 @@ public class MainScreenServlet extends javax.servlet.http.HttpServlet {
         loadStoriesIntoRequest(request);
 
         // Show the page
-        RequestDispatcher dispatcher=request.getRequestDispatcher("/viewstories.jsp"); //I don't want this to load directly to the JSP right now, but this works temporarily
+        RequestDispatcher dispatcher=request.getRequestDispatcher("/mainscreen.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -78,12 +87,6 @@ public class MainScreenServlet extends javax.servlet.http.HttpServlet {
     private UserModel loadUserFromRequest(HttpServletRequest request) {
         String username = (String) request.getSession().getAttribute("username");
         UserModel user = UserDao.getUser(username);
-
-        // If there is no user for some weird reason, just use anonymous.
-        if (user == null) {
-            user = new UserModel();
-            user.createPlayer("anonymous",0,0,0,0);
-        }
 
         return user;
     }
@@ -100,7 +103,7 @@ public class MainScreenServlet extends javax.servlet.http.HttpServlet {
         // Before we go the page to display the stories, we need to get the stories.
         // And then shove the stories in to the request.
         loadStoriesIntoRequest(request);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/viewstories.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/mainscreen.jsp");
         dispatcher.forward(request, response);
     }
 

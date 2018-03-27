@@ -9,6 +9,7 @@
 <%@ page import="models.UserModel" %>
 <%@ page import="models.Inventory" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,19 +19,15 @@
 <body>
 <%
     UserModel user = (UserModel) request.getAttribute("user");
-    ArrayList inventory = user.getPlayerInventory();
+    HashMap inventory = user.getPlayerInventory();
 //    Inventory inventory = (Inventory) request.getAttribute("inventory");
-    if (user == null) {
-        user = new UserModel();
-        user.createPlayer("anonymous", 0,0,0,0);
-    }
 
     StoryModel stories[] = (StoryModel[]) request.getAttribute("stories");
     if (stories == null) {
         stories = new StoryModel[0];
     }
 %>
-    <form action="viewStories" method="post">
+    <form action="mainScreen" method="post">
 
         <nav id="mobile_menu"></nav>
         <nav id="nav_menu">
@@ -45,29 +42,69 @@
         </nav>
     <main>
         <h1>Inventory</h1>
+        <%--Shows the things in the player's inventory (items, not tools)--%>
         <section>
-            <%--<a><%=user.getPlayerName()%></a>--%>
-            <li>Wood: <%=inventory.get(0)%></li>
-            <li>Grass: <%=inventory.get(1)%></li>
-            <li>Apples: <%=inventory.get(2)%></li>
-            <li>Stone: <%=inventory.get(3)%></li>
-            <li>Copper: <%=inventory.get(4)%></li>
-            <li>Copper Bars: <%=inventory.get(5)%></li>
-            <li>Baked Apples: <%=inventory.get(6)%></li>
-            <li>Gold: <%=inventory.get(7)%></li>
-            <li>Gold Bars: <%=inventory.get(8)%></li>
-            <li>Fish: <%=inventory.get(9)%></li>
-            <li>Fish and Apples: <%=inventory.get(10)%></li>
+            <%if(user.getLevelNum() >= 1){%>
+                <li>Wood: <%=inventory.get("Wood")%></li>
+            <%}%>
+            <%if(user.getLevelNum() >= 2){%>
+                <li>Apples: <%=inventory.get("Apples")%></li>
+            <%}%>
+            <%if(user.getLevelNum() >= 3){%>
+                <li>Grass: <%=inventory.get("Grass")%></li>
+            <%}%>
+            <%if(user.getLevelNum() >= 4){%>
+                <li>Stone: <%=inventory.get("Stone")%></li>
+            <%}%>
+            <%if(user.getLevelNum() >= 4){%>
+                <li>Copper: <%=inventory.get("Copper")%></li>
+            <%}%>
+            <%if(user.getLevelNum() >= 6){%>
+                <li>Copper Bars: <%=inventory.get("Copper Bars")%></li>
+            <%}%>
+            <%if(user.getLevelNum() >= 6){%>
+                <li>Baked Apples: <%=inventory.get("Baked Apples")%></li>
+            <%}%>
+            <%if(user.getLevelNum() >= 7){%>
+                <li>Gold: <%=inventory.get("Gold")%></li>
+            <%}%>
+            <%if(user.getLevelNum() >= 8){%>
+                <li>Gold Bars: <%=inventory.get("Gold Bars")%></li>
+            <%}%>
+            <%if(user.getLevelNum() >= 9){%>
+                <li>Fish: <%=inventory.get("Fish")%></li>
+            <%}%>
+            <%if(user.getLevelNum() >= 10){%>
+                <li>Fish and Apples: <%=inventory.get("Fish and Apples")%></li>
+            <%}%>
         </section>
+
+        <%--Shows things associated with the player (tools, not items)--%>
         <aside>
-            <li>Axe: <%=user.getAxe()%></li>
-            <li>Pickaxe: <%=user.getPickaxe()%></li>
-            <li>Sword: <%=user.getSword()%></li>
-            <li>Hat: <%=user.getHat()%></li>
-            <li>Shirt: <%=user.getShirt()%></li>
-            <li>Pants: <%=user.getPants()%></li>
-            <li>Oven: <%=user.isOven()%></li>
-            <li>Fishing Rod: <%=user.getFishingRod()%></li>
+            <%if(user.getLevelNum() >= 2){%>
+                <li>Axe: <%=user.getAxe()%>
+            <%}%>
+            <%if(user.getLevelNum() >= 3){%>
+                <li>Hat: <%=user.getHat()%>
+            <%}%>
+            <%if(user.getLevelNum() >= 3){%>
+                <li>Shirt: <%=user.getShirt()%>
+            <%}%>
+            <%if(user.getLevelNum() >= 3){%>
+                <li>Pants: <%=user.getPants()%>
+            <%}%>
+            <%if(user.getLevelNum() >= 4){%>
+                <li>Pickaxe: <%=user.getPickaxe()%>
+            <%}%>
+            <%if(user.getLevelNum() >= 5){%>
+                <li>Sword: <%=user.getSword()%>
+            <%}%>
+            <%if(user.getLevelNum() >= 6){%>
+                <li>Oven: <%=user.isOven()%>
+            <%}%>
+            <%if(user.getLevelNum() >= 9){%>
+                <li>Fishing Rod: <%=user.getFishingRod()%>
+            <%}%>
         </aside>
     </main>
 

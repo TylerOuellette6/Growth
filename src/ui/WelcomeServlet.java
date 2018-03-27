@@ -8,7 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 public class WelcomeServlet extends javax.servlet.http.HttpServlet {
@@ -29,13 +32,6 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
         String buttonValue = request.getParameter("button");
         String username = request.getParameter("username");
 
-//        if(username == "" && buttonValue != ""){
-//            RequestDispatcher dispatcher=request.getRequestDispatcher("/welcome.jsp");
-//            dispatcher.forward(request, response);
-//            return;
-//        }
-
-
         if (buttonValue.equals("Begin Your Journey") || buttonValue.equals("Continue Your Journey")) {
             username = request.getParameter("username");
             if (username.equals("")) {
@@ -47,11 +43,14 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
                 // Create an account
                 if (buttonValue != null && buttonValue.equals("Begin Your Journey")) {
                     user = new UserModel();
-                    ArrayList tempInventory = new ArrayList();
-                    for(int i = 0; i < 11; i++) {
-                        tempInventory.add(0);
+                    ArrayList<String> names = new ArrayList<String>(Arrays.asList("Wood","Grass","Apples",
+                            "Stone","Copper","Copper Bars","Baked Apples","Gold","Gold Bars","Fish",
+                            "Fish and Apples"));
+                    HashMap tempInventory = new HashMap();
+                    for(int i = 0; i < names.size(); i++){
+                        tempInventory.put(names.get(i), 0);
                     }
-                    user.createPlayer(username, 1,50,50,10);
+                    user.createPlayer(username, 10,50,50);
                     user.setPlayerInventory(tempInventory);
                     UserDao.saveUser(user);
                 }
@@ -59,29 +58,17 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
                 // Or log in
                 else if (buttonValue != null && buttonValue.equals("Continue Your Journey")) {
                     user = UserDao.getUser(username);
-                    //THIS CODE NEEDS TO READ FROM A FILE, NOT JUST GRAB THE DATA
-                    user.getLevelNum();
-                    user.getEnergy();
-                    user.getHealth();
-                    user.getRemainingXP();
                 }
             }
             request.getSession().setAttribute("username", user.getPlayerName());
             request.getSession().setAttribute("user", user);
         }
 
-//        // Or by anonymous
-//        else if (buttonValue != null && buttonValue.equals("Be Anonymous")){
-//            user = new UserModel();
-//            user.setPlayerName("anonymous");
-//            UserDao.saveUser(user);
-//        }
-
         // Load any data we need on the page into the request.
         request.setAttribute("user", user);
 
-        // Show the stories page
-        RequestDispatcher dispatcher=request.getRequestDispatcher("/viewStories");
+        // Show the main page
+        RequestDispatcher dispatcher=request.getRequestDispatcher("/mainScreen");
         dispatcher.forward(request, response);
     }
 

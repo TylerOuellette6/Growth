@@ -2,6 +2,7 @@ package models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UserModel implements Serializable {
     //Basic Player Info
@@ -12,17 +13,21 @@ public class UserModel implements Serializable {
     private int remainingXP;
 
     //Inventory Info
-    private ArrayList<Integer> playerInventory;
+    private HashMap<String, Integer> playerInventory;
 
     //Player Tools
-    String axe;
-    String pickaxe;
-    String sword;
-    String hat;
-    String shirt;
-    String pants;
-    boolean oven;
-    String fishingRod;
+    private String axe;
+    private String pickaxe;
+    private String sword;
+    private String hat;
+    private String shirt;
+    private String pants;
+    private boolean oven;
+    private String fishingRod;
+
+    //Experience Points Info
+    private int currentXP;
+    private int currentXPRequired;
 
     //Called by "constructor" class to set the tools;
     private void makeTools(String axe, String pickaxe, String sword, String hat,
@@ -38,32 +43,36 @@ public class UserModel implements Serializable {
     }
 
     //Sets the player's inventory
-    public void setPlayerInventory(ArrayList inventory){
+    public void setPlayerInventory(HashMap inventory){
         this.playerInventory = inventory;
     }
 
     //Creates the player stats
-    public void createPlayer(String name, int levelNum, int health, int energy, int xp){
+    public void createPlayer(String name, int levelNum, int health, int energy){
         this.playerName = name;
         this.levelNum = levelNum;
         this.health = health;
         this.energy = energy;
-        this.remainingXP = xp;
+        this.currentXP = 0;
+        this.currentXPRequired = 10;
         makeTools("None", "None","None","None","None",
                 "None",false,"None");
     }
 
     //Inventory Adders
-    public void addWood(int amt){
-        int currentAmt = playerInventory.get(0);
-        playerInventory.remove(0);
-        playerInventory.add(0, currentAmt+amt);
-        int newCurrent = playerInventory.get(0);
+    public void actionPerformed(String item, int amtAdded, int lostEnergy){
+        int current = playerInventory.get(item);
+        playerInventory.put(item, current + amtAdded);
+        this.energy = this.energy - lostEnergy;
+        if(amtAdded == 3){
+            currentXP += 1;
+        }
     }
 
     //Ugly Getters
-    public ArrayList<Integer> getPlayerInventory() {return playerInventory;}
-    public int getRemainingXP() {return remainingXP;}
+    public HashMap<String, Integer> getPlayerInventory() {return playerInventory;}
+    public int getCurrentXP() {return currentXP;}
+    public int getCurrentXPRequired() {return currentXPRequired;}
     public int getHealth() {return health;}
     public int getEnergy() {return energy;}
     public int getLevelNum() {return levelNum;}

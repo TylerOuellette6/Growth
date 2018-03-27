@@ -17,7 +17,7 @@ public class BuildingServlet extends javax.servlet.http.HttpServlet{
         String buttonValue = request.getParameter("button");
 
         if(buttonValue != null && buttonValue.equals("Back to Main Page")){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/viewStories");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/mainScreen");
             dispatcher.forward(request, response);
             return;
         }
@@ -33,12 +33,6 @@ public class BuildingServlet extends javax.servlet.http.HttpServlet{
     private UserModel loadUserFromRequest(HttpServletRequest request) {
         String username=request.getParameter("username");
         UserModel user = UserDao.getUser(username);
-
-        // If there is no user for some weird reason, just use anonymous.
-        if (user == null) {
-            user = new UserModel();
-            user.createPlayer("anonymous",0,0,0,0);
-        }
 
         return user;
     }

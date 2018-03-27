@@ -14,7 +14,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>mainScreenServlet</servlet-name>
-        <url-pattern>/viewStories</url-pattern>
+        <url-pattern>/mainScreen</url-pattern>
     </servlet-mapping>
 
     <!--WELCOME SCREEN-->
