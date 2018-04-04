@@ -50,7 +50,8 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
                     for(int i = 0; i < names.size(); i++){
                         tempInventory.put(names.get(i), 0);
                     }
-                    user.createPlayer(username, 10,50,50);
+                    user.createPlayer(username, 10,50,50,
+                            9, "00", "AM",1, 50, 50);
                     user.setPlayerInventory(tempInventory);
                     UserDao.saveUser(user);
                 }
@@ -76,7 +77,6 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
      * The get method is invoked when the user goes to the page by browser URI.
      */
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        String username = (String) request.getSession().getAttribute("username");
         RequestDispatcher dispatcher = request.getRequestDispatcher("/welcome.jsp");
         dispatcher.forward(request, response);
     }

@@ -1,6 +1,7 @@
 package ui;
 
 import datalayer.UserDao;
+import models.GameController;
 import models.UserModel;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,19 @@ public class InventoryServlet extends javax.servlet.http.HttpServlet{
 
         UserModel user = loadUserFromRequest(request);
         String buttonValue = request.getParameter("button");
+
+        if(buttonValue != null && buttonValue.equals("Eat Apple")){
+            GameController.eat(user, "Apples");
+        }
+        if(buttonValue != null && buttonValue.equals("Eat Baked Apple")){
+            GameController.eat(user, "Baked Apples");
+        }
+        if(buttonValue != null && buttonValue.equals("Eat Fish")){
+            GameController.eat(user, "Fish");
+        }
+        if(buttonValue != null && buttonValue.equals("Eat Fish and Apple")){
+            GameController.eat(user, "Fish and Apples");
+        }
 
         if(buttonValue != null && buttonValue.equals("Back to Main Page")){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/mainScreen");
@@ -38,9 +52,6 @@ public class InventoryServlet extends javax.servlet.http.HttpServlet{
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        UserModel user = loadUserFromRequest(request);
-        request.setAttribute("user", user);
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("/inventory.jsp");
         dispatcher.forward(request, response);
     }

@@ -37,6 +37,16 @@
         <url-pattern>/inventory</url-pattern>
     </servlet-mapping>
 
+    <!--CRAFTING SCREEN-->
+    <servlet>
+        <servlet-name>craftingServlet</servlet-name>
+        <servlet-class>ui.CraftingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>craftingServlet</servlet-name>
+        <url-pattern>/crafting</url-pattern>
+    </servlet-mapping>
+
     <!--BUILDING SCREEN-->
     <servlet>
         <servlet-name>buildingServlet</servlet-name>

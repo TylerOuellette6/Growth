@@ -17,29 +17,31 @@
 </head>
 <link rel="stylesheet" href="styles/inventory.css">
 <body>
-<%
-    UserModel user = (UserModel) request.getAttribute("user");
-    HashMap inventory = user.getPlayerInventory();
-//    Inventory inventory = (Inventory) request.getAttribute("inventory");
+    <%
+        UserModel user = (UserModel) request.getAttribute("user");
+        HashMap inventory = user.getPlayerInventory();
+    //    Inventory inventory = (Inventory) request.getAttribute("inventory");
 
-    StoryModel stories[] = (StoryModel[]) request.getAttribute("stories");
-    if (stories == null) {
-        stories = new StoryModel[0];
-    }
-%>
-    <form action="mainScreen" method="post">
+        StoryModel stories[] = (StoryModel[]) request.getAttribute("stories");
+        if (stories == null) {
+            stories = new StoryModel[0];
+        }
+    %>
+    <form action="inventory" method="post">
 
-        <nav id="mobile_menu"></nav>
-        <nav id="nav_menu">
-            <ul>
-                <li><a><%=user.getPlayerName()%></a></li>
-                <li><a>Time: <%%>&nbsp &nbsp &nbsp &nbsp Day: <%%></a></li>
-                <li><a>Health: <%=user.getHealth()%></a></li>
-                <li><a>Energy: <%=user.getEnergy()%></a></li>
-                <li><a>Level: <%=user.getLevelNum()%></a></li>
-                <li><b><input type="submit" class="btn-back" name="button" value="Back to Main Page"></b></li>
-            </ul>
-        </nav>
+    <nav id="mobile_menu"></nav>
+    <nav id="nav_menu">
+        <ul>
+            <li><a><%=user.getPlayerName()%></a></li>
+            <li><a>Time: <%=user.getHourNum()%>:<%=user.getMinuteNum()%><%=user.getAMorPM()%> &nbsp &nbsp &nbsp Day: <%=user.getDayNum()%></a></li>
+            <li><a>Health: <%=user.getHealth()%></a></li>
+            <li><a>Energy: <%=user.getEnergy()%></a></li>
+            <li><a>Level: <%=user.getLevelNum()%> &nbsp &nbsp XP:
+                <%=user.getCurrentXP()%>/<%=user.getCurrentXPRequired()%></a></li>
+            <li><b><input type="submit" class="btn-back" name="button" value="Back to Main Page"></b></li>
+        </ul>
+    </nav>
+
     <main>
         <h1>Inventory</h1>
         <%--Shows the things in the player's inventory (items, not tools)--%>
@@ -48,22 +50,18 @@
                 <li>Wood: <%=inventory.get("Wood")%></li>
             <%}%>
             <%if(user.getLevelNum() >= 2){%>
-                <li>Apples: <%=inventory.get("Apples")%></li>
+                <li>Apples: <%=inventory.get("Apples")%>&emsp;<input type="submit" name="button" value ="Eat Apple"></li>
             <%}%>
             <%if(user.getLevelNum() >= 3){%>
                 <li>Grass: <%=inventory.get("Grass")%></li>
             <%}%>
             <%if(user.getLevelNum() >= 4){%>
                 <li>Stone: <%=inventory.get("Stone")%></li>
-            <%}%>
-            <%if(user.getLevelNum() >= 4){%>
                 <li>Copper: <%=inventory.get("Copper")%></li>
             <%}%>
             <%if(user.getLevelNum() >= 6){%>
                 <li>Copper Bars: <%=inventory.get("Copper Bars")%></li>
-            <%}%>
-            <%if(user.getLevelNum() >= 6){%>
-                <li>Baked Apples: <%=inventory.get("Baked Apples")%></li>
+                <li>Baked Apples: <%=inventory.get("Baked Apples")%>&emsp;<input type="submit" value ="Eat Baked Apple"></li>
             <%}%>
             <%if(user.getLevelNum() >= 7){%>
                 <li>Gold: <%=inventory.get("Gold")%></li>
@@ -72,10 +70,10 @@
                 <li>Gold Bars: <%=inventory.get("Gold Bars")%></li>
             <%}%>
             <%if(user.getLevelNum() >= 9){%>
-                <li>Fish: <%=inventory.get("Fish")%></li>
+                <li>Fish: <%=inventory.get("Fish")%>&emsp;<input type="submit" value ="Eat Fish"></li>
             <%}%>
             <%if(user.getLevelNum() >= 10){%>
-                <li>Fish and Apples: <%=inventory.get("Fish and Apples")%></li>
+                <li>Fish and Apples: <%=inventory.get("Fish and Apples")%>&emsp;<input type="submit" value ="Eat Fish and Apple"></li>
             <%}%>
         </section>
 

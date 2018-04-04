@@ -31,7 +31,7 @@ public class CraftingServlet extends javax.servlet.http.HttpServlet{
     }
 
     private UserModel loadUserFromRequest(HttpServletRequest request) {
-        String username=request.getParameter("username");
+        String username = (String) request.getSession().getAttribute("username");
         UserModel user = UserDao.getUser(username);
 
         return user;

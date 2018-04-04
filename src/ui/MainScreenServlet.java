@@ -32,22 +32,29 @@ public class MainScreenServlet extends javax.servlet.http.HttpServlet {
         UserModel user = loadUserFromRequest(request);
         String storyText=request.getParameter("storyText");
         String buttonValue = request.getParameter("button");
+        String username = (String) request.getSession().getAttribute("username");
 
         if(buttonValue.equals("Gather Wood")){
-            user.actionPerformed("Wood", GameController.randomCollectionGenerator(), 3);
-            UserDao.saveUser(user);
+            GameController.actionPerformed(user,"wood","Wood", GameController.randomCollectionGenerator(), 3, 30);
         }
         if(buttonValue.equals("Gather Apples")){
-            user.actionPerformed("Apples", GameController.randomCollectionGenerator(), 2);
-            UserDao.saveUser(user);
+            GameController.actionPerformed(user, "apples","Apples", GameController.randomCollectionGenerator(), 2, 30);
         }
         if(buttonValue.equals("Gather Grass")){
-            user.actionPerformed("Grass", GameController.randomCollectionGenerator(), 3);
-            UserDao.saveUser(user);
+            GameController.actionPerformed(user, "grass","Grass", GameController.randomCollectionGenerator(), 3, 30);
         }
         if(buttonValue.equals("Go Mining")){
-            user.actionPerformed("Stone", GameController.randomCollectionGenerator(), 5);
-            UserDao.saveUser(user);
+            GameController.actionPerformed(user, "stones","Stone", GameController.randomCollectionGenerator(), 5, 50);
+        }
+        if(buttonValue.equals("Fight Enemies")){
+            GameController.actionPerformed(user, "fight", "Wood", GameController.randomCollectionGenerator()+1, 0, 0);
+            GameController.actionPerformed(user, "fight", "Apples", GameController.randomCollectionGenerator()+1, 0, 0);
+            GameController.actionPerformed(user, "fight", "Grass", GameController.randomCollectionGenerator()+1, 0, 0);
+            GameController.actionPerformed(user, "fight", "Stone", GameController.randomCollectionGenerator()+1, 0, 0);
+            GameController.actionPerformed(user, "fightFinal", "Wood", 0, 12, 90);
+        }
+        if(buttonValue.equals("Go Fishing")){
+            GameController.actionPerformed(user, "fish", "Fish", GameController.randomCollectionGenerator(), 5, 60);
         }
 
         if(buttonValue != null && buttonValue.equals("Inventory")){
@@ -73,7 +80,6 @@ public class MainScreenServlet extends javax.servlet.http.HttpServlet {
 
         // Load any data we need on the page into the request.
         request.setAttribute("user", user);
-        loadStoriesIntoRequest(request);
 
         // Show the page
         RequestDispatcher dispatcher=request.getRequestDispatcher("/mainscreen.jsp");
@@ -100,34 +106,8 @@ public class MainScreenServlet extends javax.servlet.http.HttpServlet {
      * @throws IOException
      */
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        // Before we go the page to display the stories, we need to get the stories.
-        // And then shove the stories in to the request.
-        loadStoriesIntoRequest(request);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/mainscreen.jsp");
         dispatcher.forward(request, response);
-    }
-
-    /**
-     * Retrieve all the stories and put them in the request.
-     * We can then use then in the JSP file.
-     *
-     * @param request
-     */
-    private void loadStoriesIntoRequest(HttpServletRequest request) {
-        ArrayList<StoryModel> storiesList = StoryDao.getStories();
-
-        // We're going to convert the array list to an array because it works better in the JSP.
-        StoryModel[] stories = storiesList.toArray(new StoryModel[storiesList.size()]);
-        request.setAttribute("stories", stories);
-    }
-
-    /**
-     * Save a story.
-     */
-    private void addStory(UserModel user, String storyText) {
-        if (storyText != null && storyText.length() > 0 && user != null) {
-            StoryDao.saveStory(UniqueIdDao.getID(), storyText, user.getPlayerName(), 0);
-        }
     }
 
     /**

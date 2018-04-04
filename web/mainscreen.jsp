@@ -47,7 +47,7 @@
         <nav id="nav_menu">
             <ul>
                 <li><a><%=user.getPlayerName()%></a></li>
-                <li><a>Time: <%%>&nbsp &nbsp &nbsp &nbsp Day: <%%></a></li>
+                <li><a>Time: <%=user.getHourNum()%>:<%=user.getMinuteNum()%><%=user.getAMorPM()%> &nbsp &nbsp &nbsp Day: <%=user.getDayNum()%></a></li>
                 <li><a>Health: <%=user.getHealth()%></a></li>
                 <li><a>Energy: <%=user.getEnergy()%></a></li>
                 <li><a>Level: <%=user.getLevelNum()%> &nbsp &nbsp XP:

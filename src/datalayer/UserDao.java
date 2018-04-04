@@ -95,7 +95,7 @@ public class UserDao {
 
         UserDao dao = new UserDao();
         UserModel user = new UserModel();
-        user.createPlayer("Tyler", 0,0,0);
+        user.createPlayer("Tyler", 0,0,0, 0, "0", "AM",0, 0, 0);
         dao.saveUser(user);
 
         user = dao.getUser(playerName);

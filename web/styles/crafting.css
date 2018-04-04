@@ -1,0 +1,70 @@
+header, body, footer, aside, nav, main, article, figure {
+    display: block;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background-color: lightgreen;
+}
+#nav_menu ul{
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+#nav_menu ul li{
+    float: left;
+    border-left: 1.5px solid black;
+    border-right: 1.5px solid black;
+    border-bottom: 3px solid black;
+    width: 16.51%;
+}
+#nav_menu li a{
+    display: block;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-decoration: none;
+    font-weight: bold;
+}
+#nav_menu li b{
+    display: block;
+    text-align: center;
+    padding-top: 0.96em;
+    padding-bottom: 0.96em;
+}
+
+body{
+    overflow-y: hidden;
+}
+main h1{
+    position: fixed;
+    left: 50%;
+    top: 15%;
+    font-size: 400%;
+    transform: translate(-50%, -50%);
+}
+section{
+    float: left;
+    width: 100%;
+    padding-top: 8%;
+}
+section li{
+    position: relative;
+    margin-bottom: 1%;
+    float: left;
+    margin-left: 30%;
+    font-size: 120%;
+    text-align: center;
+    list-style-type: none;
+}
+section input{
+    position: relative;
+    font-size: 100%;
+    margin-bottom: 1%;
+    float: right;
+    margin-right: 30%;
+}
