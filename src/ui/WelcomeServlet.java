@@ -43,16 +43,27 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
                 // Create an account
                 if (buttonValue != null && buttonValue.equals("Begin Your Journey")) {
                     user = new UserModel();
-                    ArrayList<String> names = new ArrayList<String>(Arrays.asList("Wood","Grass","Apples",
+
+                    ArrayList<String> inventoryItemNames = new ArrayList<String>(Arrays.asList("Wood","Grass","Apples",
                             "Stone","Copper","Copper Bars","Baked Apples","Gold","Gold Bars","Fish",
                             "Fish and Apples"));
                     HashMap tempInventory = new HashMap();
-                    for(int i = 0; i < names.size(); i++){
-                        tempInventory.put(names.get(i), 0);
+                    for(int i = 0; i < inventoryItemNames.size(); i++){
+                        tempInventory.put(inventoryItemNames.get(i), 100);
                     }
+
+                    ArrayList<String> toolNames = new ArrayList<String>(Arrays.asList("Axe",
+                            "Pickaxe", "Sword", "Hat", "Shirt", "Pants", "Oven", "Fishing Rod"));
+                    HashMap <String, String>tempTools = new HashMap();
+                    for(int i =0; i < toolNames.size(); i++){
+                        tempTools.put(toolNames.get(i), "None");
+                    };
+
+
                     user.createPlayer(username, 10,50,50,
                             9, "00", "AM",1, 50, 50);
                     user.setPlayerInventory(tempInventory);
+                    user.setPlayerTools(tempTools);
                     UserDao.saveUser(user);
                 }
 

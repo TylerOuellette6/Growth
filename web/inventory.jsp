@@ -20,6 +20,7 @@
     <%
         UserModel user = (UserModel) request.getAttribute("user");
         HashMap inventory = user.getPlayerInventory();
+        HashMap tools = user.getPlayerTools();
     //    Inventory inventory = (Inventory) request.getAttribute("inventory");
 
         StoryModel stories[] = (StoryModel[]) request.getAttribute("stories");
@@ -61,7 +62,7 @@
             <%}%>
             <%if(user.getLevelNum() >= 6){%>
                 <li>Copper Bars: <%=inventory.get("Copper Bars")%></li>
-                <li>Baked Apples: <%=inventory.get("Baked Apples")%>&emsp;<input type="submit" value ="Eat Baked Apple"></li>
+                <li>Baked Apples: <%=inventory.get("Baked Apples")%>&emsp;<input type="submit" name="button" value ="Eat Baked Apple"></li>
             <%}%>
             <%if(user.getLevelNum() >= 7){%>
                 <li>Gold: <%=inventory.get("Gold")%></li>
@@ -70,40 +71,46 @@
                 <li>Gold Bars: <%=inventory.get("Gold Bars")%></li>
             <%}%>
             <%if(user.getLevelNum() >= 9){%>
-                <li>Fish: <%=inventory.get("Fish")%>&emsp;<input type="submit" value ="Eat Fish"></li>
+                <li>Fish: <%=inventory.get("Fish")%>&emsp;<input type="submit" name="button" value ="Eat Fish"></li>
             <%}%>
             <%if(user.getLevelNum() >= 10){%>
-                <li>Fish and Apples: <%=inventory.get("Fish and Apples")%>&emsp;<input type="submit" value ="Eat Fish and Apple"></li>
+                <li>Fish and Apples: <%=inventory.get("Fish and Apples")%>&emsp;<input type="submit" name="button" value ="Eat Fish and Apple"></li>
             <%}%>
         </section>
 
         <%--Shows things associated with the player (tools, not items)--%>
         <aside>
             <%if(user.getLevelNum() >= 2){%>
-                <li>Axe: <%=user.getAxe()%>
+                <li>Axe: <%=tools.get("Axe")%>
             <%}%>
             <%if(user.getLevelNum() >= 3){%>
-                <li>Hat: <%=user.getHat()%>
+                <li>Hat: <%=tools.get("Hat")%>
             <%}%>
             <%if(user.getLevelNum() >= 3){%>
-                <li>Shirt: <%=user.getShirt()%>
+                <li>Shirt: <%=tools.get("Shirt")%>
             <%}%>
             <%if(user.getLevelNum() >= 3){%>
-                <li>Pants: <%=user.getPants()%>
+                <li>Pants: <%=tools.get("Pants")%>
             <%}%>
             <%if(user.getLevelNum() >= 4){%>
-                <li>Pickaxe: <%=user.getPickaxe()%>
+                <li>Pickaxe: <%=tools.get("Pickaxe")%>
             <%}%>
             <%if(user.getLevelNum() >= 5){%>
-                <li>Sword: <%=user.getSword()%>
+                <li>Sword: <%=tools.get("Sword")%>
             <%}%>
             <%if(user.getLevelNum() >= 6){%>
-                <li>Oven: <%=user.isOven()%>
+                <li>Oven: <%=tools.get("Oven")%>
             <%}%>
             <%if(user.getLevelNum() >= 9){%>
-                <li>Fishing Rod: <%=user.getFishingRod()%>
+                <li>Fishing Rod: <%=tools.get("Fishing Rod")%>
             <%}%>
         </aside>
+
+        <article>
+            <%for(int i = 0; i < user.getOutputText().size(); i++){%>
+                <a><%=user.getOutputText().get(i)%><br></a>
+            <%}%>
+        </article>
     </main>
 
     </form>

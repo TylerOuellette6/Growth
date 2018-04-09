@@ -58,6 +58,7 @@
 
         <main>
             <h1>Growth</h1>
+
             <section>
                 <div class="dropdown">
                     <input type="submit" class="btn-left" id="dropdown" name="button" value="Actions">
@@ -118,6 +119,12 @@
                 <input type="submit" class="btn-right" name="button" value="Help">
                 <input type="submit" class="btn-right" name="button" value="Pause">
             </aside>
+            <article>
+                <%for(int i = 0; i < user.getOutputText().size(); i++){%>
+                    <a><%=user.getOutputText().get(i)%><br></a>
+                <%}%>
+            </article>
+
         </main>
     </form>
 </div>

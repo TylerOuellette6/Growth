@@ -2,7 +2,76 @@ package models;
 
 import datalayer.UserDao;
 
+import java.util.ArrayList;
+
 public class GameController {
+
+    //Checks if the outputText array is too long and trims it if it is
+    static public void checkOutputTextLength(UserModel user){
+        ArrayList<String> oldOutputText = user.getOutputText();
+        ArrayList<String> newOutputText;
+
+        if(oldOutputText.size() == 6){
+            oldOutputText.remove(0);
+            newOutputText = oldOutputText;
+        }
+        else{
+            newOutputText = oldOutputText;
+        }
+
+        user.resetOutputText(newOutputText);
+    }
+
+    //Handles when tools are crafted
+    static public void craftTool(UserModel user, String item1, int item1ReqQty, String item2, int item2ReqQty,
+                                 String newTool, String toolType){
+        //Necessary info from player
+        int item1CurQty = user.getInventoryItemAmt(item1);
+        int item2CurQty = user.getInventoryItemAmt(item2);
+
+        //Make sure the player has enough of the raw materials
+        if(item1CurQty < item1ReqQty && item2CurQty < item2ReqQty){return;}
+        //If the player has enough materials, remove them from the inventory
+        else{
+            user.removeFromInventory(item1, item1ReqQty);
+            user.removeFromInventory(item2, item2ReqQty);
+        }
+
+        //Adds output text to allow the user to know what happened
+        user.addStringToOutputText("Crafted a(n) " + newTool + ".");
+        GameController.checkOutputTextLength(user);
+
+        //Add new tool to the tool HashMap
+        user.addTool(toolType, newTool);
+
+        //Save the new information
+        UserDao.saveUser(user);
+
+    }
+
+    //Handles when inventory items need to be crafted
+    static public void craftItem(UserModel user, String item1, int item1ReqQty,
+                                 String newItem){
+        //Necessary info from player
+        int item1CurQty = user.getInventoryItemAmt(item1);
+
+        //Make sure the player has enough of the raw materials
+        if(item1CurQty < item1ReqQty){return; }
+        //If the player has enough materials, remove them from the inventory
+        else{user.removeFromInventory(item1, item1ReqQty);}
+
+        //Since all the current craftable items require the inventory,
+        //Check if the user has an oven, and add the item if they do
+        if(!(user.getToolByName("Oven").equals("Oven"))){return;}
+        else {user.addToInventory(newItem, 1);}
+
+        //Adds output text to allow the user to know what happened
+        user.addStringToOutputText("Crafted a(n) " + newItem + ".");
+        GameController.checkOutputTextLength(user);
+
+        //Save the new information
+        UserDao.saveUser(user);
+    }
 
     //Handles updating the time
     //This function accounts for "hour rollover" (i.e. "1:60" -> 2:00)
@@ -112,6 +181,10 @@ public class GameController {
             user.setHealth(currentHealth - 10);
         }
 
+        //Adds output text to allow the user to know what happened
+        user.addStringToOutputText("Gathered " + amtAdded + " " + item + ".");
+        GameController.checkOutputTextLength(user);
+
         //Check if the user leveled up
         checkLevelUp(user);
 
@@ -134,7 +207,7 @@ public class GameController {
         int newHealth = 0;
 
         //You can't eat food if there is none
-        if(foodAmt == 0 || currentHealth == 50 && currentEnergy == 0){return;}//THIS DOESN'T WORK
+        if(foodAmt == 0 || (currentHealth == 50 && currentEnergy == 50)){return;}//THIS DOESN'T WORK
         else{
             if(food.equals("Apples")){
                 newHealth = currentHealth + 3;
@@ -160,6 +233,10 @@ public class GameController {
 
         //Doesn't allow user to have more health than their current max
         if(newHealth > user.getMaxHealth()){newHealth = user.getMaxHealth();}
+
+        //Adds output text to allow the user to know what happened
+        user.addStringToOutputText("Ate a(n) " + food + ".");
+        GameController.checkOutputTextLength(user);
 
         //Sets the user's variables with the new info
         user.setEnergy(newEnergy);

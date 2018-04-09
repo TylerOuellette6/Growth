@@ -61,8 +61,13 @@
                 <li>Craft Basic Sword (6 Wood, 4 Stone): </li><input type="submit" class="btn-back" name="button" value="Craft Basic Sword">
             <%}%>
             <%if(user.getLevelNum() >= 6){%>
-                <li>Craft Oven (15 Stone): </li><input type="submit" class="btn-back" name="button" value="Craft Oven">
+                <li>Craft Oven (15 Stone, 3 Copper): </li><input type="submit" class="btn-back" name="button" value="Craft Oven">
                 <li>Smelt Copper Bar (3 Copper, Requires Oven): </li><input type="submit" class="btn-back" name="button" value="Smelt Copper Bar">
+            <%}%>
+        </section>
+
+        <aside>
+            <%if(user.getLevelNum() >= 6){%>
                 <li>Bake Apple (1 Apple): </li><input type="submit" class="btn-back" name="button" value="Bake Apple">
             <%}%>
             <%if(user.getLevelNum() >= 7){%>
@@ -79,11 +84,13 @@
             <%if(user.getLevelNum() >= 10){%>
                 <li>Bake Fish and Apples (1 Fish, 1 Apple): </li><input type="submit" class="btn-back" name="button" value="Bake Fish and Apples">
             <%}%>
+        </aside>
 
-
-
-
-        </section>
+        <article>
+            <%for(int i = 0; i < user.getOutputText().size(); i++){%>
+            <a><%=user.getOutputText().get(i)%><br></a>
+            <%}%>
+        </article>
     </main>
 </body>
 </html>

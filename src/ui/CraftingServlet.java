@@ -1,6 +1,7 @@
 package ui;
 
 import datalayer.UserDao;
+import models.GameController;
 import models.UserModel;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,59 @@ public class CraftingServlet extends javax.servlet.http.HttpServlet{
 
         UserModel user = loadUserFromRequest(request);
         String buttonValue = request.getParameter("button");
+
+        if(buttonValue.equals("Craft Basic Axe")){
+            GameController.craftTool(user, "Wood", 6, "Wood", 0,
+                    "Basic Axe",  "Axe");
+        }
+        if(buttonValue.equals("Craft Grass Hat")){
+            GameController.craftTool(user, "Grass", 6, "Grass", 0,
+                    "Grass Hat","Hat");
+        }
+        if(buttonValue.equals("Craft Grass Shirt")){
+            GameController.craftTool(user, "Grass", 10, "Grass", 0,
+                    "Grass Shirt", "Shirt");
+        }
+        if(buttonValue.equals("Craft Grass Pants")){
+            GameController.craftTool(user, "Grass", 8, "Grass", 0,
+                    "Grass Pants", "Pants");
+        }
+        if(buttonValue.equals("Craft Basic Pickaxe")){
+            GameController.craftTool(user, "Wood", 4, "Stone", 3,
+                    "Basic Pickaxe","Pickaxe");
+        }
+        if(buttonValue.equals("Craft Basic Sword")){
+            GameController.craftTool(user, "Wood", 6, "Stone", 4,
+                    "Basic Sword","Sword");
+        }
+        if(buttonValue.equals("Craft Oven")){
+            GameController.craftTool(user, "Stone", 15, "Copper", 3,
+                    "Oven","Oven");
+        }
+        if(buttonValue.equals("Smelt Copper Bar")){
+            GameController.craftItem(user, "Copper", 3,"Copper Bar");
+        }
+//        if(buttonValue.equals("Bake Apple")){
+//            GameController.craftItem(user);
+//        }
+//        if(buttonValue.equals("Craft Copper Axe")){
+//            GameController.craftItem(user);
+//        }
+//        if(buttonValue.equals("Craft Copper Pickaxe")){
+//            GameController.craftItem(user);
+//        }
+//        if(buttonValue.equals("Craft Copper Sword")){
+//            GameController.craftItem(user);
+//        }
+//        if(buttonValue.equals("Smelt Gold Bar")){
+//            GameController.craftItem(user);
+//        }
+//        if(buttonValue.equals("Craft Fishing Rod")){
+//            GameController.craftItem(user);
+//        }
+//        if(buttonValue.equals("Bake Fish and Apples")){
+//            GameController.craftItem(user);
+//        }
 
         if(buttonValue != null && buttonValue.equals("Back to Main Page")){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/mainScreen");

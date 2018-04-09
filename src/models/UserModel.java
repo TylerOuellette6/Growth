@@ -15,16 +15,7 @@ public class UserModel implements Serializable {
 
     //Inventory Info
     private HashMap<String, Integer> playerInventory;
-
-    //Player Tools
-    private String axe;
-    private String pickaxe;
-    private String sword;
-    private String hat;
-    private String shirt;
-    private String pants;
-    private boolean oven;
-    private String fishingRod;
+    private HashMap<String, String> playerTools;
 
     //Experience Points Info
     private int currentXP;
@@ -36,23 +27,14 @@ public class UserModel implements Serializable {
     private int dayNum;
     private String AMorPM;
 
-    //Called by "constructor" class to set the tools;
-    private void makeTools(String axe, String pickaxe, String sword, String hat,
-                           String shirt, String pants, boolean oven, String fishingRod){
-        this.axe = axe;
-        this.pickaxe = pickaxe;
-        this.sword = sword;
-        this.hat = hat;
-        this.shirt = shirt;
-        this.pants = pants;
-        this.oven = oven;
-        this.fishingRod = fishingRod;
-    }
-
-    //Sets the player's inventory
+    //Sets the player's inventory and tools
     public void setPlayerInventory(HashMap inventory){
         this.playerInventory = inventory;
     }
+    public void setPlayerTools(HashMap tools) {this.playerTools = tools;}
+
+    //ArrayList of strings with recent actions
+    private ArrayList<String> outputText = new ArrayList<String>();
 
     //Creates the player stats
     public void createPlayer(String name, int levelNum, int health, int energy, int hour, String minute,
@@ -72,9 +54,6 @@ public class UserModel implements Serializable {
 
         this.maxEnergy = maxEnergy;
         this.maxHealth = maxHealth;
-
-        makeTools("None", "None","None","None","None",
-                "None",false,"None");
     }
 
     //Allows outside classes to add things to the inventory
@@ -88,6 +67,16 @@ public class UserModel implements Serializable {
         int current = playerInventory.get(item);
         playerInventory.put(item, current - amtRemoved);
     }
+
+    //Allows outside classes to add a new tool to the user
+    public void addTool(String toolType, String addedTool){playerTools.put(toolType, addedTool);}
+
+    //Allows outside classes to add a new string to the output text
+    public void addStringToOutputText(String action){outputText.add(action);}
+
+    //Allows outside classes to "reset" the output text
+    //This just allows for pruning so the ArrayList is never too long
+    public void resetOutputText(ArrayList outputText){this.outputText = outputText;}
 
     //Ugly Setters
     public void setEnergy(int newEnergyAmt){this.energy = newEnergyAmt;}
@@ -106,6 +95,9 @@ public class UserModel implements Serializable {
     public HashMap<String, Integer> getPlayerInventory() {return playerInventory;}
     public int getInventoryItemAmt(String item) {return playerInventory.get(item);}
 
+    public HashMap<String, String> getPlayerTools(){return  playerTools;}
+    public String getToolByName(String toolType){return playerTools.get(toolType);}
+
     public int getCurrentXP() {return currentXP;}
     public int getCurrentXPRequired() {return currentXPRequired;}
 
@@ -121,12 +113,5 @@ public class UserModel implements Serializable {
     public int getDayNum() {return dayNum;}
     public String getAMorPM() {return AMorPM;}
 
-    public String getAxe() {return axe;}
-    public String getPickaxe() {return pickaxe;}
-    public String getSword() {return sword;}
-    public String getHat() {return hat;}
-    public String getShirt() {return shirt;}
-    public String getPants() {return pants;}
-    public boolean isOven() {return oven;}
-    public String getFishingRod() {return fishingRod;}
+    public ArrayList<String> getOutputText() {return outputText;}
 }
