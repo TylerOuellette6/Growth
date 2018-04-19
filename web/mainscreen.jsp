@@ -31,11 +31,6 @@
   -->
 <%
     UserModel user = (UserModel) request.getAttribute("user");
-
-    StoryModel stories[] = (StoryModel[]) request.getAttribute("stories");
-    if (stories == null) {
-        stories = new StoryModel[0];
-    }
 %>
 <p></p>
 <p></p>
@@ -59,66 +54,76 @@
         <main>
             <h1>Growth</h1>
 
-            <section>
-                <div class="dropdown">
-                    <input type="submit" class="btn-left" id="dropdown" name="button" value="Actions">
-                    <%if(user.getLevelNum() >= 9){%>
-                        <div class="dropdown-content">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Fight Enemies">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Fishing">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
-                        </div>
-                    <%}else if(user.getLevelNum() >= 5){%>
-                        <div class="dropdown-content">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Fight Enemies">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
-                        </div>
-                    <%}else if(user.getLevelNum() >= 4){%>
-                        <div class="dropdown-content">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
-                        </div>
-                    <%}else if(user.getLevelNum() >=3){%>
-                        <div class="dropdown-content">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
-                        </div>
-                    <%}else if(user.getLevelNum() >= 2){%>
-                        <div class="dropdown-content">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
-                        </div>
-                    <%}else if(user.getLevelNum() >= 1){%>
-                        <div class="dropdown-content">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                            <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
-                        </div>
-                    <%}%>
-                </div>
-                <input type="submit" class="btn-left" name="button" value="Inventory">
-                <input type="submit" class="btn-left" name="button" value="Crafting">
-                <input type="submit" class="btn-left" name="button" value="Building">
-            </section>
-            <aside>
-                <input type="submit" class="btn-right" name="button" value="Achievements">
-                <input type="submit" class="btn-right" name="button" value="Credits">
-                <input type="submit" class="btn-right" name="button" value="Help">
-                <input type="submit" class="btn-right" name="button" value="Pause">
-            </aside>
+            <%if(user.getHealth() > 0){%>
+                <section>
+                    <div class="dropdown">
+                        <input type="submit" class="btn-left" id="dropdown" name="button" value="Actions">
+                        <%if(user.getLevelNum() >= 9){%>
+                            <div class="dropdown-content">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Fight Enemies">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Fishing">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                            </div>
+                        <%}else if(user.getLevelNum() >= 5){%>
+                            <div class="dropdown-content">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Fight Enemies">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                            </div>
+                        <%}else if(user.getLevelNum() >= 4){%>
+                            <div class="dropdown-content">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                            </div>
+                        <%}else if(user.getLevelNum() >=3){%>
+                            <div class="dropdown-content">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                            </div>
+                        <%}else if(user.getLevelNum() >= 2){%>
+                            <div class="dropdown-content">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                            </div>
+                        <%}else if(user.getLevelNum() >= 1){%>
+                            <div class="dropdown-content">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                            </div>
+                        <%}%>
+                    </div>
+                    <input type="submit" class="btn-left" name="button" value="Inventory">
+                    <input type="submit" class="btn-left" name="button" value="Crafting">
+
+                </section>
+                <aside>
+                    <input type="submit" class="btn-right" name="button" value="Building">
+                    <input type="submit" class="btn-right" name="button" value="Achievements">
+                </aside>
+            <%}else{%>
+                <section>
+                    <input type="submit" class="btn-left" id="dropdown" name="button" value="Actions" disabled>
+                    <input type="submit" class="btn-left" name="button" value="Inventory" disabled>
+                    <input type="submit" class="btn-left" name="button" value="Crafting" disabled>
+                </section>
+                <aside>
+                    <input type="submit" class="btn-right" name="button" value="Building" disabled>
+                    <input type="submit" class="btn-right" name="button" value="Achievements" disabled>
+                </aside>
+            <%}%>
             <article>
                 <%for(int i = 0; i < user.getOutputText().size(); i++){%>
                     <a><%=user.getOutputText().get(i)%><br></a>

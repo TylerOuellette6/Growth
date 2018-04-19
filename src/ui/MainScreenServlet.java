@@ -35,26 +35,29 @@ public class MainScreenServlet extends javax.servlet.http.HttpServlet {
         String username = (String) request.getSession().getAttribute("username");
 
         if(buttonValue.equals("Gather Wood")){
-            GameController.actionPerformed(user,"wood","Wood", GameController.randomCollectionGenerator(), 3, 30);
+            GameController.actionPerformed(user,"wood","Wood", GameController.randomCollectionGenerator(), user.getWoodEnergyConsumption(), 30);
         }
         if(buttonValue.equals("Gather Apples")){
-            GameController.actionPerformed(user, "apples","Apples", GameController.randomCollectionGenerator(), 2, 30);
+            GameController.actionPerformed(user, "apples","Apples", GameController.randomCollectionGenerator(), 5, 30);
         }
         if(buttonValue.equals("Gather Grass")){
-            GameController.actionPerformed(user, "grass","Grass", GameController.randomCollectionGenerator(), 3, 30);
+            GameController.actionPerformed(user, "grass","Grass", GameController.randomCollectionGenerator(), 5, 30);
         }
         if(buttonValue.equals("Go Mining")){
-            GameController.actionPerformed(user, "stones","Stone", GameController.randomCollectionGenerator(), 5, 50);
+            GameController.actionPerformed(user, "stones","Stone", GameController.randomCollectionGenerator(), user.getStoneEnergyConsumption(), 50);
         }
         if(buttonValue.equals("Fight Enemies")){
             GameController.actionPerformed(user, "fight", "Wood", GameController.randomCollectionGenerator()+1, 0, 0);
             GameController.actionPerformed(user, "fight", "Apples", GameController.randomCollectionGenerator()+1, 0, 0);
             GameController.actionPerformed(user, "fight", "Grass", GameController.randomCollectionGenerator()+1, 0, 0);
             GameController.actionPerformed(user, "fight", "Stone", GameController.randomCollectionGenerator()+1, 0, 0);
-            GameController.actionPerformed(user, "fightFinal", "Wood", 0, 12, 90);
+            GameController.actionPerformed(user, "fightFinal", "Wood", 0, user.getFightEnergyConsumption(), 90);
         }
         if(buttonValue.equals("Go Fishing")){
-            GameController.actionPerformed(user, "fish", "Fish", GameController.randomCollectionGenerator(), 5, 60);
+            GameController.actionPerformed(user, "fish", "Fish", GameController.randomCollectionGenerator(), user.getFishEnergyConsumption(), 60);
+        }
+        if(buttonValue.equals("Sleep")){
+            GameController.sleep(user);
         }
 
         if(buttonValue != null && buttonValue.equals("Inventory")){

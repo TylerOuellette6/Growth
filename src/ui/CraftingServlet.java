@@ -46,29 +46,33 @@ public class CraftingServlet extends javax.servlet.http.HttpServlet{
                     "Oven","Oven");
         }
         if(buttonValue.equals("Smelt Copper Bar")){
-            GameController.craftItem(user, "Copper", 3,"Copper Bar");
+            GameController.craftItem(user, "Copper", 3,"Copper Bars");
         }
-//        if(buttonValue.equals("Bake Apple")){
-//            GameController.craftItem(user);
-//        }
-//        if(buttonValue.equals("Craft Copper Axe")){
-//            GameController.craftItem(user);
-//        }
-//        if(buttonValue.equals("Craft Copper Pickaxe")){
-//            GameController.craftItem(user);
-//        }
-//        if(buttonValue.equals("Craft Copper Sword")){
-//            GameController.craftItem(user);
-//        }
-//        if(buttonValue.equals("Smelt Gold Bar")){
-//            GameController.craftItem(user);
-//        }
-//        if(buttonValue.equals("Craft Fishing Rod")){
-//            GameController.craftItem(user);
-//        }
-//        if(buttonValue.equals("Bake Fish and Apples")){
-//            GameController.craftItem(user);
-//        }
+        if(buttonValue.equals("Bake Apple")){
+            GameController.craftItem(user, "Apple", 1, "Baked Apples");
+        }
+        if(buttonValue.equals("Craft Copper Axe")){
+            GameController.craftTool(user, "Wood", 4, "Copper Bars", 3,
+                    "Copper Axe", "Axe");
+        }
+        if(buttonValue.equals("Craft Copper Pickaxe")){
+            GameController.craftTool(user, "Wood", 4, "Copper Bars", 3,
+                    "Copper Pickaxe", "Pickaxe");
+        }
+        if(buttonValue.equals("Craft Copper Sword")){
+            GameController.craftTool(user, "Wood", 6, "Copper Bars", 3,
+                    "Copper Sword", "Sword");
+        }
+        if(buttonValue.equals("Smelt Gold Bar")){
+            GameController.craftItem(user, "Gold", 3, "Gold Bar");
+        }
+        if(buttonValue.equals("Craft Fishing Rod")){
+            GameController.craftTool(user, "Wood", 10, "Grass", 4,
+                    "Basic Fishing Rod", "Fishing Rod");
+        }
+        if(buttonValue.equals("Bake Fish and Apples")){
+            GameController.craftItem(user, "Fish", 1, "Fish and Apples");
+        }
 
         if(buttonValue != null && buttonValue.equals("Back to Main Page")){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/mainScreen");

@@ -1,13 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: aceof
-  Date: 2/26/2018
-  Time: 3:55 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page import="models.StoryModel" %>
 <%@ page import="models.UserModel" %>
-<%@ page import="models.Inventory" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -92,5 +84,6 @@
             <%}%>
         </article>
     </main>
+    </form>
 </body>
 </html>

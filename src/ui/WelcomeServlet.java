@@ -44,26 +44,36 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
                 if (buttonValue != null && buttonValue.equals("Begin Your Journey")) {
                     user = new UserModel();
 
+                    ArrayList<String> achievementNames = new ArrayList<String>(Arrays.asList("First Time Lumberjack",
+                            "First Time Craftsman", "First Time Farmer", "First Time Eater", "Basic Axe", "Getting Dressed",
+                            "Fully Dressed", "First Time Miner", "Basic Pickaxe", "Attacked!", "First Time Fighter",
+                            "Basic Sword", "First Time Smelter", "First Time Chef", "Tool Upgrade", "Full Tool Set Upgrade",
+                            "Gold!", "First Time Fisherman", "New Rod", "Professional Chef", "First Time Builder", "The End?"));
+                    HashMap<String, Boolean>tempAchievements = new HashMap();
+                    for(int i = 0; i < achievementNames.size(); i++){tempAchievements.put(achievementNames.get(i), false);}
+
                     ArrayList<String> inventoryItemNames = new ArrayList<String>(Arrays.asList("Wood","Grass","Apples",
                             "Stone","Copper","Copper Bars","Baked Apples","Gold","Gold Bars","Fish",
                             "Fish and Apples"));
                     HashMap tempInventory = new HashMap();
-                    for(int i = 0; i < inventoryItemNames.size(); i++){
-                        tempInventory.put(inventoryItemNames.get(i), 100);
-                    }
+                    for(int i = 0; i < inventoryItemNames.size(); i++){tempInventory.put(inventoryItemNames.get(i), 0); }
 
                     ArrayList<String> toolNames = new ArrayList<String>(Arrays.asList("Axe",
                             "Pickaxe", "Sword", "Hat", "Shirt", "Pants", "Oven", "Fishing Rod"));
                     HashMap <String, String>tempTools = new HashMap();
-                    for(int i =0; i < toolNames.size(); i++){
-                        tempTools.put(toolNames.get(i), "None");
-                    };
+                    for(int i =0; i < toolNames.size(); i++){tempTools.put(toolNames.get(i), "None");}
 
 
                     user.createPlayer(username, 10,50,50,
                             9, "00", "AM",1, 50, 50);
+                    user.setAchievementsList(tempAchievements);
                     user.setPlayerInventory(tempInventory);
                     user.setPlayerTools(tempTools);
+                    user.addStringToOutputText("You awaken to find yourself on an island.", user);
+                    user.addStringToOutputText("You scream for help.", user);
+                    user.addStringToOutputText("No one is around to hear it.", user);
+                    user.addStringToOutputText("You don't have any clothes, materials, or tools.", user);
+                    user.addStringToOutputText("You must begin your story of GROWTH.", user);
                     UserDao.saveUser(user);
                 }
 
