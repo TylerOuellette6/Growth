@@ -6,6 +6,7 @@ header, body, footer, aside, nav, main, article, figure {
     padding: 0;
 }
 html{
+    font-family: 'Aclonica';
     background-color: lightgreen;
 }
 #nav_menu ul{
@@ -23,6 +24,7 @@ html{
     width: 16.51%;
 }
 #nav_menu li a{
+    font-size: 120%;
     display: block;
     text-align: center;
     padding-top: 1em;
@@ -33,8 +35,8 @@ html{
 #nav_menu li b{
     display: block;
     text-align: center;
-    padding-top: 0.96em;
-    padding-bottom: 0.96em;
+    padding-top: 1.06em;
+    padding-bottom: 1.06em;
 }
 
 body{
@@ -48,7 +50,6 @@ main h1 {
     transform: translate(-50%, -50%);
 }
 
-
 section{
     float: none;
     width: 100%;
@@ -56,7 +57,7 @@ section{
 }
 section li{
     position: relative;
-    margin-left: 38%;
+    margin-left: 32%;
     margin-bottom: 4%;
     font-size: 120%;
     float: left;
@@ -68,7 +69,7 @@ section input{
     font-size: 100%;
     margin-bottom: 4%;
     float: right;
-    margin-right: 38%;
+    margin-right: 32%;
 }
 
 article{

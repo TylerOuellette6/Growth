@@ -8,6 +8,7 @@
     <title>Growth</title>
 </head>
 <link rel="stylesheet" href="styles/inventory.css">
+<link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
 <body>
     <%
         UserModel user = (UserModel) request.getAttribute("user");
@@ -24,7 +25,7 @@
                 <li><a>Energy: <%=user.getEnergy()%></a></li>
                 <li><a>Level: <%=user.getLevelNum()%> &nbsp &nbsp XP:
                     <%=user.getCurrentXP()%>/<%=user.getCurrentXPRequired()%></a></li>
-                <li><b><input type="submit" class="btn-back" name="button" value="Back to Main Page"></b></li>
+                <li><b><input type="submit" class="btn-back" name="button" value="Back to Main Page" style="font-size: 120%; font-family: 'Aclonica';"></b></li>
             </ul>
         </nav>
 
@@ -36,7 +37,7 @@
                     <li>Wood: <%=inventory.get("Wood")%></li>
                 <%}%>
                 <%if(user.getLevelNum() >= 2){%>
-                    <li>Apples: <%=inventory.get("Apples")%>&emsp;<input type="submit" name="button" value ="Eat Apple"></li>
+                    <li>Apples: <%=inventory.get("Apples")%>&emsp;<input type="submit" name="button" value ="Eat Apple" style="font-family: 'Aclonica';"></li>
                 <%}%>
                 <%if(user.getLevelNum() >= 3){%>
                     <li>Grass: <%=inventory.get("Grass")%></li>
@@ -47,7 +48,7 @@
                 <%}%>
                 <%if(user.getLevelNum() >= 6){%>
                     <li>Copper Bars: <%=inventory.get("Copper Bars")%></li>
-                    <li>Baked Apples: <%=inventory.get("Baked Apples")%>&emsp;<input type="submit" name="button" value ="Eat Baked Apple"></li>
+                    <li>Baked Apples: <%=inventory.get("Baked Apples")%>&emsp;<input type="submit" name="button" value ="Eat Baked Apple" style="font-family: 'Aclonica';"></li>
                 <%}%>
                 <%if(user.getLevelNum() >= 7){%>
                     <li>Gold: <%=inventory.get("Gold")%></li>
@@ -56,10 +57,10 @@
                     <li>Gold Bars: <%=inventory.get("Gold Bars")%></li>
                 <%}%>
                 <%if(user.getLevelNum() >= 9){%>
-                    <li>Fish: <%=inventory.get("Fish")%>&emsp;<input type="submit" name="button" value ="Eat Fish"></li>
+                    <li>Fish: <%=inventory.get("Fish")%>&emsp;<input type="submit" name="button" value ="Eat Fish" style="font-family: 'Aclonica';"></li>
                 <%}%>
                 <%if(user.getLevelNum() >= 10){%>
-                    <li>Fish and Apples: <%=inventory.get("Fish and Apples")%>&emsp;<input type="submit" name="button" value ="Eat Fish and Apple"></li>
+                    <li>Fish and Apples: <%=inventory.get("Fish and Apples")%>&emsp;<input type="submit" name="button" value ="Eat Fish and Apple" style="font-family: 'Aclonica';"></li>
                 <%}%>
             </section>
 

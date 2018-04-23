@@ -8,6 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="resources/style.css">
 <link rel="stylesheet" href="styles/mainpage.css">
+<link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+
 <!-- Latest compiled and minified CSS -->
 <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"--%>
       <%--integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">--%>
@@ -57,71 +59,71 @@
             <%if(user.getHealth() > 0){%>
                 <section>
                     <div class="dropdown">
-                        <input type="submit" class="btn-left" id="dropdown" name="button" value="Actions">
+                        <input type="submit" class="btn-left" id="dropdown" name="button" value="Actions" style="font-family: 'Aclonica';">
                         <%if(user.getLevelNum() >= 9){%>
                             <div class="dropdown-content">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Fight Enemies">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Fishing">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Fight Enemies" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Fishing" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep" style="font-family: 'Aclonica';">
                             </div>
                         <%}else if(user.getLevelNum() >= 5){%>
                             <div class="dropdown-content">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Fight Enemies">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Fight Enemies" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep" style="font-family: 'Aclonica';">
                             </div>
                         <%}else if(user.getLevelNum() >= 4){%>
                             <div class="dropdown-content">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Go Mining" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep" style="font-family: 'Aclonica';">
                             </div>
                         <%}else if(user.getLevelNum() >=3){%>
                             <div class="dropdown-content">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Grass" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep" style="font-family: 'Aclonica';">
                             </div>
                         <%}else if(user.getLevelNum() >= 2){%>
                             <div class="dropdown-content">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Apples" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep" style="font-family: 'Aclonica';">
                             </div>
                         <%}else if(user.getLevelNum() >= 1){%>
                             <div class="dropdown-content">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood">
-                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Gather Wood" style="font-family: 'Aclonica';">
+                                <input type="submit" class="btn-left" id="drpdwnButton" name="button" value="Sleep" style="font-family: 'Aclonica';">
                             </div>
                         <%}%>
                     </div>
-                    <input type="submit" class="btn-left" name="button" value="Inventory">
-                    <input type="submit" class="btn-left" name="button" value="Crafting">
+                    <input type="submit" class="btn-left" name="button" value="Inventory" style="font-family: 'Aclonica';">
+                    <input type="submit" class="btn-left" name="button" value="Crafting" style="font-family: 'Aclonica';">
 
                 </section>
                 <aside>
-                    <input type="submit" class="btn-right" name="button" value="Building">
-                    <input type="submit" class="btn-right" name="button" value="Achievements">
+                    <input type="submit" class="btn-right" name="button" value="Building" style="font-family: 'Aclonica';">
+                    <input type="submit" class="btn-right" name="button" value="Achievements" style="font-family: 'Aclonica';">
                 </aside>
             <%}else{%>
                 <section>
-                    <input type="submit" class="btn-left" id="dropdown" name="button" value="Actions" disabled>
-                    <input type="submit" class="btn-left" name="button" value="Inventory" disabled>
-                    <input type="submit" class="btn-left" name="button" value="Crafting" disabled>
+                    <input type="submit" class="btn-left" id="dropdown" name="button" value="Actions" style="font-family: 'Aclonica';" disabled>
+                    <input type="submit" class="btn-left" name="button" value="Inventory" style="font-family: 'Aclonica';" disabled>
+                    <input type="submit" class="btn-left" name="button" value="Crafting" style="font-family: 'Aclonica';" disabled>
                 </section>
                 <aside>
-                    <input type="submit" class="btn-right" name="button" value="Building" disabled>
-                    <input type="submit" class="btn-right" name="button" value="Achievements" disabled>
+                    <input type="submit" class="btn-right" name="button" value="Building" style="font-family: 'Aclonica';" disabled>
+                    <input type="submit" class="btn-right" name="button" value="Achievements" style="font-family: 'Aclonica';" disabled>
                 </aside>
             <%}%>
             <article>

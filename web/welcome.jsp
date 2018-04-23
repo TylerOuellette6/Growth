@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href = "resources/style.css">
 <link rel="stylesheet" href = "styles/welcome.css">
+<link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+
 <!-- Latest compiled and minified CSS -->
 <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">--%>
 
@@ -46,8 +48,10 @@
       <input type="text" name="username" class="form-control" id="username" placeholder="Enter your name.">
     </div>
     <div class="container">
-      <input type="submit" class="btn btn-info" name="button" value="Continue Your Journey">
-      <input type="submit" class="btn btn-info" name="button" value="Begin Your Journey">
+      <input type="submit" class="btn btn-info" name="button" value="Continue Your Journey"
+             style="font-size: 35%; font-family: 'Aclonica';">
+      <input type="submit" class="btn btn-info" name="button" value="Begin Your Journey"
+             style="font-size: 35%; font-family: 'Aclonica';">
     </div>
   </div>
 

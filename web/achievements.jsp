@@ -7,6 +7,7 @@
     <title>Growth</title>
 </head>
 <link rel="stylesheet" href="styles/achievements.css">
+<link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
 <body>
     <%
         UserModel user = (UserModel) request.getAttribute("user");
@@ -22,7 +23,7 @@
             <li><a>Energy: <%=user.getEnergy()%></a></li>
             <li><a>Level: <%=user.getLevelNum()%> &nbsp &nbsp XP:
                 <%=user.getCurrentXP()%>/<%=user.getCurrentXPRequired()%></a></li>
-            <li><b><input type="submit" class="btn-back" name="button" value="Back to Main Page"></b></li>
+            <li><b><input type="submit" class="btn-back" name="button" value="Back to Main Page" style="font-size: 120%; font-family: 'Aclonica';"></b></li>
         </ul>
     </nav>
 

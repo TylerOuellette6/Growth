@@ -6,6 +6,7 @@ header, body, footer, aside, nav, main, article, figure {
     padding: 0;
 }
 html{
+    font-family: 'Aclonica';
     background-color: lightgreen;
 }
 #nav_menu ul{
@@ -23,6 +24,7 @@ html{
     width: 16.51%;
 }
 #nav_menu li a{
+    font-size: 120%;
     display: block;
     text-align: center;
     padding-top: 1em;

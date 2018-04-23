@@ -64,7 +64,7 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
                     for(int i =0; i < toolNames.size(); i++){tempTools.put(toolNames.get(i), "None");}
 
 
-                    user.createPlayer(username, 10,50,50,
+                    user.createPlayer(username, 1,50,50,
                             9, "00", "AM",1, 50, 50);
                     user.setAchievementsList(tempAchievements);
                     user.setPlayerInventory(tempInventory);
