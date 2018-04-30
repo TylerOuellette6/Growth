@@ -1,6 +1,7 @@
 package ui;
 
 import datalayer.UserDao;
+import models.GameController;
 import models.UserModel;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,10 @@ public class BuildingServlet extends javax.servlet.http.HttpServlet{
 
         UserModel user = loadUserFromRequest(request);
         String buttonValue = request.getParameter("button");
+
+        if(buttonValue.equals("Construct Basic Shelter")){
+            GameController.buildStructure(user, "Basic Shelter");
+        }
 
         if(buttonValue != null && buttonValue.equals("Back to Main Page")){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/mainScreen");

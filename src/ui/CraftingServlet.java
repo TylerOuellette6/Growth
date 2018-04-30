@@ -17,6 +17,7 @@ public class CraftingServlet extends javax.servlet.http.HttpServlet{
         UserModel user = loadUserFromRequest(request);
         String buttonValue = request.getParameter("button");
 
+        //All the possible crafting options
         if(buttonValue.equals("Craft Basic Axe")){
             GameController.craftTool(user, "Wood", 6, "Wood", 0,
                     "Basic Axe",  "Axe");
@@ -49,7 +50,7 @@ public class CraftingServlet extends javax.servlet.http.HttpServlet{
             GameController.craftItem(user, "Copper", 3,"Copper Bars");
         }
         if(buttonValue.equals("Bake Apple")){
-            GameController.craftItem(user, "Apple", 1, "Baked Apples");
+            GameController.craftItem(user, "Apples", 1, "Baked Apples");
         }
         if(buttonValue.equals("Craft Copper Axe")){
             GameController.craftTool(user, "Wood", 4, "Copper Bars", 3,

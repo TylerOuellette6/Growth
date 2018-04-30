@@ -68,7 +68,7 @@ public class GameController {
     //Helper method to reduce redundant code in checkAchievementCompletion
     private static void updateAchievementStats(UserModel user, String achievementName, int XPReceived){
         user.completeAchievement(achievementName);
-        user.addStringToOutputText("Achievement Unlocked: " + achievementName + "(+ " + XPReceived + " XP)", user);
+        user.addStringToOutputText("ACHIEVEMENT UNLOCKED: " + achievementName + "(+ " + XPReceived + " XP)", user);
         user.setCurrentXP(user.getCurrentXP() + XPReceived);
     }
 
@@ -106,7 +106,7 @@ public class GameController {
         int item2CurQty = user.getInventoryItemAmt(item2);
 
         //Make sure the player has enough of the raw materials
-        if(item1CurQty < item1ReqQty && item2CurQty <= item2ReqQty){
+        if(item1CurQty <= item1ReqQty || item2CurQty <= item2ReqQty){
             user.addStringToOutputText("Insufficient Materials.", user);
             return;
         }
@@ -187,8 +187,9 @@ public class GameController {
                 currentHourAmt += 1;
             }
 
-            if(currentHourAmt >= 13){
-                currentHourAmt -= 12;
+            if(currentHourAmt >= 12){currentHourAmt -= 12;}
+
+            if(currentHourAmt == 12){
                 if(AMorPM.equals("AM")){AMorPM = "PM";}
                 else if(AMorPM.equals("PM")){
                     AMorPM = "AM";
@@ -261,7 +262,7 @@ public class GameController {
         int currentXP = user.getCurrentXP();
         int currentHealth = user.getHealth();
 
-        if(user.getEnergy() - lostEnergy <=0){
+        if(user.getEnergy() - lostEnergy < 0){
             user.addStringToOutputText("Insufficient Energy.", user);
             user.addStringToOutputText("Eat or sleep to restore energy.", user);
             return;
@@ -322,12 +323,12 @@ public class GameController {
         //Resets health and energy to max, adds 1 to day num, and sets time to 9AM
         user.setHealth(user.getMaxHealth());
         user.setEnergy(user.getMaxEnergy());
-        user.setDayNum(user.getDayNum() + 1);
+        if(!(user.getAMorPM().equals("AM"))){user.setDayNum(user.getDayNum() + 1);}
         user.setHourNum(9);
         user.setMinuteNum("00");
         user.setAMorPM("AM");
 
-        //Outputs text to user knows what hapepned
+        //Outputs text to user knows what happened
         user.addStringToOutputText("Slept.", user);
         //Saves new info
         UserDao.saveUser(user);
@@ -345,7 +346,7 @@ public class GameController {
         int newHealth = 0;
 
         //You can't eat food if there is none
-        if(foodAmt == 0 || (currentHealth == 50 && currentEnergy == 50)){return;}//THIS DOESN'T WORK
+        if(foodAmt == 0 || (currentHealth == user.getMaxHealth() && currentEnergy == user.getMaxEnergy())){return;}//THIS DOESN'T WORK
         else{
             if(food.equals("Apples")){
                 newHealth = currentHealth + 3;

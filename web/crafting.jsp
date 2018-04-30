@@ -45,7 +45,7 @@
             <%if(user.getLevelNum() >= 3){%>
                 <li>Craft Grass Hat (6 Grass): </li><input type="submit" class="btn-back" name="button" value="Craft Grass Hat" style="font-family: 'Aclonica';">
                 <li>Craft Grass Shirt (10 Grass): </li><input type="submit" class="btn-back" name="button" value="Craft Grass Shirt" style="font-family: 'Aclonica';">
-                <li>Craft Grass Pants (6 Grass): </li><input type="submit" class="btn-back" name="button" value="Craft Grass Pants" style="font-family: 'Aclonica';">
+                <li>Craft Grass Pants (8 Grass): </li><input type="submit" class="btn-back" name="button" value="Craft Grass Pants" style="font-family: 'Aclonica';">
             <%}%>
             <%if(user.getLevelNum() >= 4){%>
                 <li>Craft Basic Pickaxe (4 Wood, 3 Stone): </li><input type="submit" class="btn-back" name="button" value="Craft Basic Pickaxe" style="font-family: 'Aclonica';">
@@ -61,7 +61,7 @@
 
         <aside>
             <%if(user.getLevelNum() >= 6){%>
-                <li>Bake Apple (1 Apple): </li><input type="submit" class="btn-back" name="button" value="Bake Apple" style="font-family: 'Aclonica';">
+                <li>Bake Apple (1 Apple, Requires Oven): </li><input type="submit" class="btn-back" name="button" value="Bake Apple" style="font-family: 'Aclonica';">
             <%}%>
             <%if(user.getLevelNum() >= 7){%>
                 <li>Craft Copper Axe (4 Wood, 3 Copper Bars): </li><input type="submit" class="btn-back" name="button" value="Craft Copper Axe" style="font-family: 'Aclonica';">

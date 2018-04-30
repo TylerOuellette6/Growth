@@ -44,12 +44,15 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
                 if (buttonValue != null && buttonValue.equals("Begin Your Journey")) {
                     user = new UserModel();
 
+                    //This is just to make constructing the hashmap easier
+                    //Makes an array list with all the names of the achievements
                     ArrayList<String> achievementNames = new ArrayList<String>(Arrays.asList("First Time Lumberjack",
                             "First Time Craftsman", "First Time Farmer", "First Time Eater", "Basic Axe", "Getting Dressed",
                             "Fully Dressed", "First Time Miner", "Basic Pickaxe", "Attacked!", "First Time Fighter",
                             "Basic Sword", "First Time Smelter", "First Time Chef", "Tool Upgrade", "Full Tool Set Upgrade",
                             "Gold!", "First Time Fisherman", "New Rod", "Professional Chef", "First Time Builder", "The End?"));
                     HashMap<String, Boolean>tempAchievements = new HashMap();
+                    //Inserts all the names from the array list into the hashmap
                     for(int i = 0; i < achievementNames.size(); i++){tempAchievements.put(achievementNames.get(i), false);}
 
                     ArrayList<String> inventoryItemNames = new ArrayList<String>(Arrays.asList("Wood","Grass","Apples",
@@ -63,7 +66,7 @@ public class WelcomeServlet extends javax.servlet.http.HttpServlet {
                     HashMap <String, String>tempTools = new HashMap();
                     for(int i =0; i < toolNames.size(); i++){tempTools.put(toolNames.get(i), "None");}
 
-
+                    //Sets all the player's initial values
                     user.createPlayer(username, 1,50,50,
                             9, "00", "AM",1, 50, 50);
                     user.setAchievementsList(tempAchievements);
